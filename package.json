@@ -1,0 +1,33 @@
+{
+  "name": "palato",
+  "version": "0.1.0",
+  "description": "Wire your personal taste profile into any AI coding agent",
+  "type": "module",
+  "bin": {
+    "palato": "./bin/palato.js"
+  },
+  "scripts": {
+    "prepare": "chmod +x bin/palato.js"
+  },
+  "keywords": ["ai", "agent", "taste", "design", "mcp", "claude", "cursor"],
+  "author": "",
+  "license": "PolyForm-Shield-1.0.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "inquirer": "^9.2.0",
+    "ora": "^8.0.1",
+    "fs-extra": "^11.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}
