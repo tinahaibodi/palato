@@ -1,4 +1,13 @@
-# palato
+```
+ ██████╗  █████╗ ██╗      █████╗ ████████╗ ██████╗ 
+ ██╔══██╗██╔══██╗██║     ██╔══██╗╚══██╔══╝██╔═══██╗
+ ██████╔╝███████║██║     ███████║   ██║   ██║   ██║
+ ██╔═══╝ ██╔══██║██║     ██╔══██║   ██║   ██║   ██║
+ ██║     ██║  ██║███████╗██║  ██║   ██║   ╚██████╔╝
+ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝  ╚═╝    ╚═════╝ 
+
+ wire your taste into every agent
+```
 
 __Palato__ is an agent-agnostic taste profile tool. Capture your design sensibility once — and wire it into every AI coding agent you use so it builds things that feel like you.
 
