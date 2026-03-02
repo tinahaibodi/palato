@@ -11,8 +11,6 @@ npm install palato -D
 
 Palato drops a `PALATO.md` into your project — a structured profile of your design sensibilities, cultural references, typography rules, animation preferences, and aesthetic anti-patterns. Each agent gets a copy so it knows what you care about before it writes a single line.
 
-Instead of re-explaining your taste on every project, you define it once and every agent reads it.
-
 ## Setup
 ```
 npx palato init
@@ -22,36 +20,22 @@ Detects your installed agents, scaffolds `PALATO.md` into your project, and wire
 
 ## Filling in your profile
 
-Three ways — use whichever fits:
+**Write it yourself** — open `PALATO.md` and fill in the sections manually.
 
-**1. Write it yourself**
+**Answer two questions** — run `npx palato interview`. Answer two open questions about your life and influences, then optionally answer 5 quick design questions. Claude writes your full profile from your answers.
 
-Open `PALATO.md` and fill in the sections manually.
-
-**2. Answer two questions**
-```
-npx palato interview
-```
-
-Answer two open questions about your life and influences, then optionally answer 5 quick design questions. Claude writes your full profile from your answers.
-
-**3. Drop in visual references**
-```
-npx palato generate
-```
-
-Paste URLs — portfolio sites, Are.na boards, product pages, direct image links. Claude analyses the visuals and writes your profile from what it sees.
+**Drop in visual references** — run `npx palato generate`. Paste URLs — portfolio sites, Are.na boards, product pages, image links. Claude analyses the visuals and writes your profile from what it sees.
 
 Both `interview` and `generate` require an Anthropic API key. You'll be prompted on first run and it's saved to `.env`.
 
-## Verify setup
+## Verify
 ```
 npx palato doctor
 ```
 
 ## MCP server
 
-Add to Claude Code in `~/.claude/settings.json`:
+Add to `~/.claude/settings.json`:
 ```json
 {
   "mcpServers": {
@@ -63,8 +47,6 @@ Add to Claude Code in `~/.claude/settings.json`:
 }
 ```
 
-Once connected, agents get access to:
-
 | Tool | Description |
 |------|-------------|
 | `palato_get_profile` | Returns your full taste profile |
@@ -73,55 +55,27 @@ Once connected, agents get access to:
 
 ## Paper
 
-Paper is a connected design canvas that lets agents read and write directly to your design files. Once connected, your taste profile and your live Paper canvas work together — agents apply your aesthetic when generating components directly in Paper.
+Paper is a connected design canvas — agents read and write directly to your design files, applying your palato profile when generating components.
 
-**1. Install Paper desktop**
-
-Download from [paper.design/downloads](https://paper.design/downloads) and create an account.
-
-**2. Connect to palato**
-
-Run `npx palato init` and select Paper. This writes a placeholder entry to `~/.claude/settings.json`.
-
-**3. Get your MCP URL**
-
-Open Paper desktop → Settings → MCP. Copy the URL shown there.
-
-**4. Replace the placeholder**
-
-Open `~/.claude/settings.json` and replace `REPLACE_WITH_YOUR_PAPER_MCP_URL` with the URL from Paper.
-
-**5. Verify**
-```
-npx palato doctor
-```
+1. Download [Paper desktop](https://paper.design/downloads)
+2. Run `npx palato init` and select Paper
+3. Open Paper → Settings → MCP, copy your URL
+4. Open `~/.claude/settings.json` and replace `REPLACE_WITH_YOUR_PAPER_MCP_URL`
+5. Run `npx palato doctor` to verify
 
 ## Figma
 
-Figma's MCP server is read-only — agents can read your styles, variables, and components from your open Figma file. Combined with your palato profile, agents apply your taste when porting components from Figma into code.
+Figma's MCP is read-only — agents read your styles, variables, and components and apply your palato profile when porting them to code.
 
-**1. Get a Figma API key**
-
-Go to [figma.com/settings](https://figma.com/settings) → Personal access tokens → Generate new token. Copy it.
-
-**2. Connect to palato**
-
-Run `npx palato init` and select Figma. This writes a placeholder entry to `~/.claude/settings.json`.
-
-**3. Replace the placeholder**
-
-Open `~/.claude/settings.json` and replace `REPLACE_WITH_YOUR_FIGMA_API_KEY` with your token.
-
-**4. Verify**
-```
-npx palato doctor
-```
+1. Go to figma.com/settings → Personal access tokens → generate a token
+2. Run `npx palato init` and select Figma
+3. Open `~/.claude/settings.json` and replace `REPLACE_WITH_YOUR_FIGMA_API_KEY`
+4. Run `npx palato doctor` to verify
 
 ## Requirements
 
-* Node 18+
+Node 18+
 
 ## License
 
-© 2026
-Licensed under PolyForm Shield 1.0.0
+© 2026 Licensed under PolyForm Shield 1.0.0
