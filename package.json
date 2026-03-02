@@ -1,6 +1,6 @@
 {
   "name": "palato",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Wire your personal taste profile into any AI coding agent",
   "type": "module",
   "bin": {
