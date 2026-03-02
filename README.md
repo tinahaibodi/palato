@@ -27,8 +27,6 @@ Instead of re-explaining your taste on every project, you write it once and ever
 * Two-question setup — Captures the 20 things that most shape an artist's eye, distilled into two prompts
 * Agent auto-config — Wires into Claude Code, Cursor, and Codex out of the box
 * MCP server — Agents can query specific sections of your profile on demand via stdio
-* Local-first — Your profile lives in your repo, nothing leaves your machine
-* Zero lock-in — It's a markdown file. Read it, edit it, version it, delete it
 
 ## Agent setup
 
