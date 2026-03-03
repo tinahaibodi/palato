@@ -1,93 +1,74 @@
 # palato
 
-__Palato__ is an agent-agnostic taste profile tool. Answer two questions about your life, influences, and aesthetic — and wire that context into every AI coding agent you use.
+__Palato__ is an agent-agnostic taste profile tool. Answer a few questions about your life, influences, and aesthetic — and your AI coding agent synthesizes a taste profile it references on every design decision.
 
 ## Install
 
 ```
 npm install palato -D
+npx palato install
 ```
 
-## Usage
-
-```
-npx palato init
-```
-
-The setup wizard detects your installed agents, scaffolds `PALATO.md` into your project, and wires it in automatically.
+The installer detects your agents, drops a skill file into your project, and wires it in automatically.
 
 ## How it works
 
-Palato drops a `PALATO.md` into your project — a structured profile of your design sensibilities, cultural references, and aesthetic rules. Each agent gets a copy so it knows what you care about before it writes a single line.
+Palato is a **skill file** — a set of instructions your AI agent reads and follows. When you invoke it for the first time, the agent interviews you: two deep questions about where you come from and what made you, optional design-specific questions, and optional links to things you've curated. Then it synthesizes everything into a concise taste profile.
 
-Instead of re-explaining your taste on every project, you write it once and every agent reads it.
+From that point on, the agent references your profile whenever it makes design, UI, copy, or aesthetic decisions.
+
+Instead of re-explaining your taste on every project, you do it once and every agent reads it.
+
+## What it creates
+
+```
+palato/
+├── palato.md               ← Skill file (interview + synthesis instructions)
+├── keeks-palato.md         ← Your generated taste profile
+├── brutalist-palato.md     ← Another profile (optional)
+└── links.md                ← Reference URLs (optional)
+```
 
 ## Features
 
-* Two-question setup — Captures the 20 things that most shape an artist's eye, distilled into two prompts
-* Agent auto-config — Wires into Claude Code, Cursor, and Codex out of the box
-* MCP server — Agents can query specific sections of your profile on demand via stdio
-* Local-first — Your profile lives in your repo, nothing leaves your machine
-* Zero lock-in — It's a markdown file. Read it, edit it, version it, delete it
+* Agent-driven onboarding — The agent interviews you and synthesizes the profile. No blank templates.
+* Multiple profiles — Create context-specific profiles (e.g. brutalist, warm, editorial) and switch between them.
+* Agent auto-config — Wires into Claude Code, Cursor, and Codex out of the box.
+* External references — Link to Paper, Figma, Are.na boards or any URL. The agent fetches and extracts taste signals.
+* Local-first — Your profile lives in your repo, nothing leaves your machine.
+* Zero lock-in — It's markdown files. Read them, edit them, version them, delete them.
 
-## Agent setup
+## Usage
 
-```
-# Scaffold taste profile and configure agents
-npx palato init
-
-# Check everything is connected
-npx palato doctor
-```
-
-## MCP server setup
-
-The MCP server lets agents query your taste profile on demand via stdio — no port, no background process to manage. The agent spawns it automatically when it needs it.
-
-**1. Add to your agent**
-
-The easiest way — auto-detects and configures all supported agents:
+After installing, start by telling your agent:
 
 ```
-npx add-mcp "npx -y palato server"
+/palato [your-name]
 ```
 
-Or for Claude Code specifically:
+The agent will walk you through the interview. When it's done, your profile is ready.
+
+### Switch profiles
 
 ```
-npx palato init
+/palato use brutalist
 ```
 
-**2. Or add manually to Claude Code**
-
-In your `claude_desktop_config.json` or `.claude/settings.json`:
-
-```json
-{
-  "mcpServers": {
-    "palato": {
-      "command": "npx",
-      "args": ["-y", "palato", "server"]
-    }
-  }
-}
-```
-
-**3. Verify**
+### List profiles
 
 ```
-npx palato doctor
+/palato list
 ```
 
-## MCP tools
+## Agent compatibility
 
-Once configured, agents get access to:
+| Agent | Wiring |
+|-------|--------|
+| Claude Code | Symlinked into `.claude/skills/` |
+| Cursor | Referenced in `.cursorrules` |
+| Codex / OpenAI | Referenced in `AGENTS.md` |
 
-| Tool | Description |
-|------|-------------|
-| `palato_get_profile` | Returns your full taste profile |
-| `palato_get_section` | Returns a specific section |
-| `palato_update` | Appends notes to a section |
+For any other agent, point it at `palato/palato.md` and tell it to follow the instructions.
 
 ## Requirements
 
@@ -99,5 +80,5 @@ Full documentation at __palato.dev__
 
 ## License
 
-© 2026
+&copy; 2026
 Licensed under PolyForm Shield 1.0.0
